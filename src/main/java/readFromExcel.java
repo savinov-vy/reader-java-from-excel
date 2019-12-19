@@ -3,16 +3,44 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 
 import java.io.*;
-import java.util.Date;
+import java.util.Iterator;
 
 public class readFromExcel {
+
+    // получаем файл в формате xls
+    FileInputStream file = new FileInputStream(new File("d:\\data.xlsx"));
+
+    // формируем из файла экземпляр HSSFWorkbook
+    HSSFWorkbook workbook = new HSSFWorkbook(file);
+
+    // выбираем первый лист для обработки
+// нумерация начинается с 0
+    HSSFSheet sheet = workbook.getSheetAt(0);
+
+    // получаем Iterator по всем строкам в листе
+    Iterator<Row> rowIterator = sheet.iterator();
+
+    // получаем Iterator по всем ячейкам в строке
+    Iterator<Row> rowIter = sheet.rowIterator();
+    HSSFRow row = (HSSFRow) rowIter.next();
+    Iterator<Cell> cellIterator = row.cellIterator();
+
+    public readFromExcel() throws IOException {
+    }
+
+
+/*
     public static void main(String[] args) throws IOException {
-        HSSFWorkbook vb = readWorkbook("d:\\data.xlsx");
+        HSSFWorkbook vb = readWorkbook("d:\\data.xls");
         HSSFSheet sheet= vb.getSheet("Лист 1");
         HSSFRow row = sheet.getRow(1); //строка
-
+        HSSFCell cell = row.getCell(0);
+        double d = cell.getNumericCellValue();
+        System.out.println(d);
     }
 
     public static HSSFWorkbook readWorkbook(String filename) {
@@ -25,7 +53,12 @@ public class readFromExcel {
             return null;
         }
     }
-}
+}*/
+//https://stackoverflow.com/questions/14734519/apache-poi-celliterator-skips-blank-cells-but-not-in-first-row
+//https://javadevblog.com/rabotaem-s-excel-v-java.html
+//https://habr.com/ru/post/56817/
+//https://stackoverflow.com/questions/14734519/apache-poi-celliterator-skips-blank-cells-but-not-in-first-row
+
 // получаем файл в формате xls
   /*  @SuppressWarnings("deprecation")
     public static void writeIntoExcel(String file) throws FileNotFoundException, IOException {
