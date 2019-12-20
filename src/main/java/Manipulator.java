@@ -15,11 +15,8 @@ public class Manipulator {
         try {
             java.awt.Robot robot = new java.awt.Robot();
 
-            // Creates the delay of 5 sec so that you can open notepad before
-
             // Robot start writting
 
-            robot.delay(5000);
             for (Character symbolChar : listChar)
                 switch (symbolChar) {
                     case '1':
@@ -55,7 +52,6 @@ public class Manipulator {
                     case '.':
                         robot.keyPress(KeyEvent.VK_COMMA);
                         break;
-                    // по дефолту нужно сделать выбрашенную ошибку о том что работ не понимает что делать.
                     case ' ':
                         robot.keyPress(KeyEvent.VK_0);
                         break;

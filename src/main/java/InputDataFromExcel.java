@@ -13,7 +13,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class InputDataFromExcel {
     //ReadExcelDemo
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        Thread.sleep(5000);
 
         // Read XSL file
         FileInputStream inputStream = new FileInputStream(new File("d:\\data.xlsx"));
