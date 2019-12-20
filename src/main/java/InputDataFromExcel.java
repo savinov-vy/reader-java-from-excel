@@ -11,7 +11,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class Start {
+public class InputDataFromExcel {
     //ReadExcelDemo
     public static void main(String[] args) throws IOException {
 
@@ -26,6 +26,7 @@ public class Start {
 
         // Get iterator to all the rows in current sheet
         Iterator<Row> rowIterator = sheet.iterator();
+        Manipulator manipulator = new Manipulator();
 
         while (rowIterator.hasNext()) {
             Row row = rowIterator.next();
@@ -61,8 +62,12 @@ public class Start {
                         System.out.print(evaluator.evaluate(cell).getNumberValue());
                         break;
                     case NUMERIC:
-                        System.out.print(cell.getNumericCellValue());
-                        System.out.print("\t");
+                       // System.out.print(cell.getNumericCellValue());
+                        Double num = cell.getNumericCellValue();
+                        String str = Double.toString(num);
+                        manipulator.robotWriting(str);
+
+                       // System.out.print("\t");
                         break;
                     case STRING:
                         System.out.print(cell.getStringCellValue());
@@ -73,9 +78,11 @@ public class Start {
                         System.out.print("\t");
                         break;
                 }
+                        manipulator.robotManipulation("cell");
 
             }
             System.out.println("");
+                        manipulator.robotManipulation("row");
         }
     }
 

@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-public class InputData {
+public class InputDataFromTXT {
     public ArrayList start() throws IOException, InterruptedException {
         System.out.println("введите путь и имя файла");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

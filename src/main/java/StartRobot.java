@@ -1,4 +1,4 @@
-
+/*
 import main.TimeCount;
 import java.io.IOException;
 
@@ -14,4 +14,4 @@ public class StartingProgramm {
 
 
     }
-}
+}*/

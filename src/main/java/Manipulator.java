@@ -4,21 +4,13 @@ import java.awt.AWTException;
 import java.awt.Robot;
 
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
-public class RobotExp {
-    ArrayList<Character> listChar;
+public class Manipulator {
 
-    public RobotExp(ArrayList<Character> listChar) {
-        this.listChar = listChar;
-    }
 
-    public void startRobot() {
-        robotWriting();
+    public void robotWriting(String str) {
 
-    }
-
-    public void robotWriting() {
+        char[] listChar = str.toCharArray();
 
         try {
             java.awt.Robot robot = new java.awt.Robot();
@@ -60,12 +52,13 @@ public class RobotExp {
                     case '0':
                         robot.keyPress(KeyEvent.VK_0);
                         break;
-                    case ',':
+                    case '.':
                         robot.keyPress(KeyEvent.VK_COMMA);
                         break;
                     // по дефолту нужно сделать выбрашенную ошибку о том что работ не понимает что делать.
                     case ' ':
-                        robotManipulation();
+                        robot.keyPress(KeyEvent.VK_0);
+                        break;
                 }
 
 
@@ -75,7 +68,7 @@ public class RobotExp {
     }
 
 
-    private void robotManipulation() {
+    public void robotManipulation(String str) {
         Robot robot = null;
         try {
             robot = new Robot();
@@ -83,17 +76,31 @@ public class RobotExp {
             e.printStackTrace();
         }
 
-        robot.keyPress(KeyEvent.VK_DOWN); ;
-        robot.keyPress(KeyEvent.VK_UP); ;
-        robot.keyPress(KeyEvent.VK_DOWN); ;
-        robot.keyPress(KeyEvent.VK_RIGHT); ;
-        robot.keyPress(KeyEvent.VK_RIGHT); ;
-        robot.keyPress(KeyEvent.VK_LEFT); ;
-        robot.keyPress(KeyEvent.VK_DOWN); ;
-        robot.keyPress(KeyEvent.VK_SPACE); ;
-        robot.keyPress(KeyEvent.VK_ENTER); ;
-        robot.keyPress(KeyEvent.VK_ENTER); ;
-        robot.keyPress(KeyEvent.VK_ENTER); ;
+        if (str.equals("cell")) robot.keyPress(KeyEvent.VK_SPACE);
+
+        else if (str.equals("row")) robot.keyPress(KeyEvent.VK_ENTER);
+
+       /* robot.keyPress(KeyEvent.VK_DOWN);
+
+        robot.keyPress(KeyEvent.VK_UP);
+
+        robot.keyPress(KeyEvent.VK_DOWN);
+
+        robot.keyPress(KeyEvent.VK_RIGHT);
+
+        robot.keyPress(KeyEvent.VK_RIGHT);
+
+        robot.keyPress(KeyEvent.VK_LEFT);
+
+        robot.keyPress(KeyEvent.VK_DOWN);
+
+
+        robot.keyPress(KeyEvent.VK_ENTER);
+
+        robot.keyPress(KeyEvent.VK_ENTER);
+
+        robot.keyPress(KeyEvent.VK_ENTER);
+        */
     }
 
 }

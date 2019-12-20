@@ -2,10 +2,10 @@ package main;
 
 import java.sql.Time;
 
-public class TimeCount {
+public class Timer {
     int time;
 
-    public TimeCount(int time) {
+    public Timer(int time) {
         this.time = time;
     }
 
