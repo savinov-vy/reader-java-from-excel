@@ -4,20 +4,18 @@ import java.awt.AWTException;
 import java.awt.Robot;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class Manipulator {
 
-
-    public void robotWriting(String str) {
-
-        char[] listChar = str.toCharArray();
+    public void robotWriting(ArrayList<Character> ch) {
 
         try {
             java.awt.Robot robot = new java.awt.Robot();
 
             // Robot start writting
 
-            for (Character symbolChar : listChar)
+            for (Character symbolChar : ch) {
                 switch (symbolChar) {
                     case '1':
                         robot.keyPress(KeyEvent.VK_1);
@@ -58,45 +56,23 @@ public class Manipulator {
                 }
 
 
+            }
+            robot.keyPress(KeyEvent.VK_ENTER);
         } catch (AWTException ex) {
             ex.printStackTrace();
         }
     }
 
 
-    public void robotManipulation(String str) {
-        Robot robot = null;
+    public void robotEnter() {
+
         try {
-            robot = new Robot();
-        } catch (AWTException e) {
-            e.printStackTrace();
+            java.awt.Robot robotEnt = new java.awt.Robot();
+            // Robot start writting
+            robotEnt.keyPress(KeyEvent.VK_ENTER);
+        } catch (AWTException ex) {
+            ex.printStackTrace();
         }
-
-        if (str.equals("cell")) robot.keyPress(KeyEvent.VK_SPACE);
-
-        else if (str.equals("row")) robot.keyPress(KeyEvent.VK_ENTER);
-
-       /* robot.keyPress(KeyEvent.VK_DOWN);
-
-        robot.keyPress(KeyEvent.VK_UP);
-
-        robot.keyPress(KeyEvent.VK_DOWN);
-
-        robot.keyPress(KeyEvent.VK_RIGHT);
-
-        robot.keyPress(KeyEvent.VK_RIGHT);
-
-        robot.keyPress(KeyEvent.VK_LEFT);
-
-        robot.keyPress(KeyEvent.VK_DOWN);
-
-
-        robot.keyPress(KeyEvent.VK_ENTER);
-
-        robot.keyPress(KeyEvent.VK_ENTER);
-
-        robot.keyPress(KeyEvent.VK_ENTER);
-        */
     }
-
 }
+
