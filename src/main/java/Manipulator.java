@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class Manipulator {
 
+    public static Boolean stopAllowed;
+
     public void robotWriting(ArrayList<Character> ch) {
 
         try {
@@ -53,14 +55,14 @@ public class Manipulator {
                     case ',':
                         robot.keyPress(KeyEvent.VK_PERIOD);
                         break;
-                    case ' ':
-                        robot.keyPress(KeyEvent.VK_0);
-                        break;
                 }
 
 
             }
-            robot.keyPress(KeyEvent.VK_ENTER);
+            if (!stopAllowed) {
+                robot.keyPress(KeyEvent.VK_ENTER);
+                stopAllowed = true;
+            }
         } catch (AWTException ex) {
             ex.printStackTrace();
         }
@@ -72,7 +74,10 @@ public class Manipulator {
         try {
             java.awt.Robot robotEnt = new java.awt.Robot();
             // Robot start writting
-            robotEnt.keyPress(KeyEvent.VK_ENTER);
+            if (!stopAllowed) {
+                robotEnt.keyPress(KeyEvent.VK_ENTER);
+                Manipulator.stopAllowed = true;
+            }
         } catch (AWTException ex) {
             ex.printStackTrace();
         }

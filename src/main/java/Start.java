@@ -44,26 +44,25 @@ public class Start {
 
                 switch (cellType) {
                     case _NONE:
-                        System.out.print("");
-                        System.out.print("\t");
+                        Manipulator.stopAllowed = true;
                         break;
                     case BOOLEAN:
                         System.out.print(cell.getBooleanCellValue());
-                        System.out.print("\t");
+
                         break;
                     case BLANK:
-                        System.out.print("");
-                        System.out.print("\t");
+                        Manipulator.stopAllowed = true;
                         break;
                     case FORMULA:
                         // Formula
                         System.out.print(cell.getCellFormula());
-                        System.out.print("\t");
+
                         FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
                         // Print out value evaluated by formula
                         System.out.print(evaluator.evaluate(cell).getNumberValue());
                         break;
                     case NUMERIC:
+                        Manipulator.stopAllowed = false;
                         Double num = cell.getNumericCellValue();
                         ArrayList<Character> chList = handler.work(num);
                         manipulator.robotWriting(chList);
@@ -71,10 +70,7 @@ public class Start {
                         handler.list.clear();
                         break;
                     case STRING:
-                        String strCell = cell.getStringCellValue();
-                        //manipulator.robotWriting(strCell);
-                        System.out.print(cell.getStringCellValue());
-                        System.out.print("\t");
+                        Manipulator.stopAllowed = true;
                         break;
                     case ERROR:
                         System.out.print("!");
@@ -83,7 +79,10 @@ public class Start {
                 }
 
             }
-            manipulator.robotEnter();
+            if (!Manipulator.stopAllowed)  {
+                manipulator.robotEnter();
+                Manipulator.stopAllowed = true;
+            }
         }
     }
 
