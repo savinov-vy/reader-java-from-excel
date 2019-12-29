@@ -15,18 +15,18 @@ public class Handler {
                 else if (chars[i] == '.' || chars[i] == ','){
                     count++;
                     break;
-            }else if (chars[i] != '0') break;
+                }else if (chars[i] != '0') break;
+            }
         }
-    }
         for(
-    int i = 0;
-    i<chars.length - count;i++)
+                int i = 0;
+                i<chars.length - count;i++)
 
-    {
-        list.add(chars[i]);
-    }
+        {
+            list.add(chars[i]);
+        }
         return list;
-}
+    }
 
 
     public char[] workStringToCharMas(Double num) {

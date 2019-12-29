@@ -48,7 +48,10 @@ public class Manipulator {
                         robot.keyPress(KeyEvent.VK_0);
                         break;
                     case '.':
-                        robot.keyPress(KeyEvent.VK_COMMA);
+                        robot.keyPress(KeyEvent.VK_PERIOD);
+                        break;
+                    case ',':
+                        robot.keyPress(KeyEvent.VK_PERIOD);
                         break;
                     case ' ':
                         robot.keyPress(KeyEvent.VK_0);
