@@ -82,5 +82,19 @@ public class Manipulator {
             ex.printStackTrace();
         }
     }
+    public void robotEscape() {
+
+        try {
+            java.awt.Robot robotEnt = new java.awt.Robot();
+            // Robot start writting
+
+                robotEnt.keyPress(KeyEvent.VK_ESCAPE);
+                robotEnt.keyPress(KeyEvent.VK_Y);
+                Manipulator.stopAllowed = true;
+
+        } catch (AWTException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
 

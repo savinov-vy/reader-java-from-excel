@@ -84,6 +84,7 @@ public class Start {
                 Manipulator.stopAllowed = true;
             }
         }
+        manipulator.robotEscape();
     }
 
 }
