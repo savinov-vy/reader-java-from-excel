@@ -18,6 +18,7 @@ public class Manipulator {
             // Robot start writting
 
             for (Character symbolChar : ch) {
+                Thread.sleep(100);
                 switch (symbolChar) {
                     case '1':
                         robot.keyPress(KeyEvent.VK_1);
@@ -65,6 +66,8 @@ public class Manipulator {
             }
         } catch (AWTException ex) {
             ex.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
